@@ -1,0 +1,107 @@
+# 📘 MySQL DDL Commands Documentation
+
+This repository is a quick guide for MySQL beginners to learn and practice **DDL (Data Definition Language)** commands.  
+DDL defines the **structure** of databases, tables, and objects.
+
+---
+
+## 📌 1. Create Database & Table
+```sql
+-- Create database
+CREATE DATABASE ash;
+
+-- Show databases
+SHOW DATABASES;
+
+-- Select database
+USE ash;
+
+-- Create table with constraints
+CREATE TABLE ak (
+    sid INT PRIMARY KEY AUTO_INCREMENT,
+    sname VARCHAR(20) NOT NULL,
+    age INT CHECK (age > 18)
+);
+📌 2. Insert & View Data
+INSERT INTO ak (sname, age) VALUES ('Akash', 21);
+INSERT INTO ak (sname, age) VALUES ('Vasu', 21);
+
+SELECT * FROM ak;
+
+📌 3. ALTER TABLE (Modify Structure)
+
+Add column
+
+ALTER TABLE ak ADD COLUMN ph_no INT NOT NULL;
+
+
+Add column after specific column
+
+ALTER TABLE ak ADD COLUMN id INT AFTER age;
+
+
+Rename column
+
+ALTER TABLE ak RENAME COLUMN ph_no TO phone;
+
+
+Modify datatype
+
+ALTER TABLE ak MODIFY phone CHAR(20);
+
+
+Drop columns
+
+ALTER TABLE ak DROP COLUMN phone, DROP COLUMN email;
+
+📌 4. DROP, TRUNCATE, DELETE
+
+Drop table
+
+DROP TABLE ak;
+
+
+Truncate table (clear data only)
+
+TRUNCATE TABLE ak;
+
+
+Delete rows selectively
+
+DELETE FROM ak WHERE age < 20;
+
+📌 5. Rename Table
+RENAME TABLE ak TO KrsnaDas;
+
+📌 6. Practice Task: Employees Table
+CREATE DATABASE officedb;
+USE officedb;
+
+CREATE TABLE employees (
+    eid INT PRIMARY KEY AUTO_INCREMENT,
+    ename VARCHAR(20) NOT NULL
+);
+
+ALTER TABLE employees ADD COLUMN gender CHAR(1) AFTER ename;
+ALTER TABLE employees ADD COLUMN salary INT;
+ALTER TABLE employees ADD COLUMN role VARCHAR(20) AFTER gender;
+
+ALTER TABLE employees RENAME COLUMN role TO erole;
+ALTER TABLE employees DROP COLUMN erole;
+
+RENAME TABLE employees TO emp;
+DROP TABLE emp;
+
+✅ Summary
+
+CREATE → make DB objects
+
+ALTER → change structure
+
+DROP → remove permanently
+
+TRUNCATE → delete all rows (keep structure)
+
+RENAME → rename table
+
+💡 Use this repo to learn + practice + reference quickly.
